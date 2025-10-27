@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use App\PostStatusEnum;
+use App\Enums\PostStatusEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'title',
         'date',
@@ -19,4 +22,11 @@ class Post extends Model
     protected $casts = [
         'status' => PostStatusEnum::class,
     ];
+
+    protected $dates = [
+        'created_at',
+        'updated_at',
+    ];
+
+
 }
