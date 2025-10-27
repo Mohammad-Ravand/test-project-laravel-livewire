@@ -3,7 +3,7 @@
 <div class="relative h-full">
     <!-- Card with conditional background color -->
     <div
-        class="rounded-2xl h-full flex flex-col p-6 shadow-sm border-0 {{ $post->status->value === 'done' ? 'bg-green-500' : 'bg-red-500' }} text-white">
+        class="rounded-2xl h-full flex flex-col p-6 shadow-sm border-0 {{ $post->status->value === 'done' ? 'bg-[#75B13F]' : 'bg-[#DB705D]' }} text-white">
         <!-- Header with icons -->
         <div class="flex justify-between items-start mb-4">
             <h3 class="text-xl font-bold leading-tight">{{ $post->title }}</h3>
