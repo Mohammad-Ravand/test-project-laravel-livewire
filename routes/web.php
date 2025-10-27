@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Laravel\Fortify\Features;
 use Livewire\Volt\Volt;
+use App\Livewire\Counter;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,3 +31,7 @@ Route::middleware(['auth'])->group(function () {
         )
         ->name('two-factor.show');
 });
+
+Route::get('/posts', App\Livewire\Post::class)->name('posts');
+
+Route::get('/counter', Counter::class);
