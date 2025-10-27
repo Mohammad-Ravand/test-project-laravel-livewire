@@ -19,5 +19,5 @@
     </div>
 
     <!-- Modal -->
-    <x-posts.create-new-post :showModal="$showModal" :users="$users"  :postAttachement="$postAttachement"/>
+    <x-posts.create-new-post :showModal="$showModal" :users="$users" :status="$status"  :postAttachement="$postAttachement"/>
 </div>

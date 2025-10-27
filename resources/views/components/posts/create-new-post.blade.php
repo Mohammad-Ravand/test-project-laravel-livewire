@@ -3,6 +3,7 @@
     'showModal' => false,
     'attachment' => null,
     'message' => null,
+    'status',
     'postAttachement'=>null
 ])
 @if ($showModal)
@@ -90,7 +91,7 @@
 
                 <!-- Description -->
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-3">توضیحات *</label>
+                    <label class="block text-sm font-bold text-gray-700 mb-0">توضیحات *</label>
                     <textarea wire:model.live="description" rows="6"
                         class="w-full px-4 py-1 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all"
                         placeholder="توضیحات تفصیلی نوشته را وارد کنید..."></textarea>
@@ -104,6 +105,27 @@
                             {{ \App\Helpers\PersianHelper::toPersianNumbers(strlen($description ?? '')) }}/۱۰۰۰ کاراکتر
                         </div>
                     </div>
+                </div>
+
+
+                <h2>stauts: {{$status}}</h2>
+                <!-- status -->
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mt-0 mb-3">وضعیت</label>
+                    <div class="flex items-center gap-x-4">
+
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" wire:model.live="status" class="sr-only peer" {{ $status==1 ? 'checked' : '' }}>
+                            <div class="w-14 h-7 bg-[#DB705D] peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#75B13F]"></div>
+                            <span class="ms-3 text-lg font-medium text-gray-700">
+                                <span x-show="!$wire.status">انجام نشده</span>
+                                <span x-show="$wire.status">انجام شده</span>
+                            </span>
+                        </label>
+                    </div>
+                    @error('status')
+                        <div class="mt-2 text-red-600 text-sm font-medium">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <!-- File Upload -->

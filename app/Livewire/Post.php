@@ -2,18 +2,20 @@
 
 namespace App\Livewire;
 
+use App\Enums\PostStatusEnum;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Post as PostModel;
 use Illuminate\Support\Facades\Storage;
 use Hekmatinasser\Verta\Verta;
 use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class Post extends Component
 {
     use WithFileUploads;
 
-    public $posts, $title, $date, $description, $attachment, $status = 'undone';
+    public $posts, $title, $date, $description, $attachment, $status = 0;
     public $postIdBeingUpdated = null;
     public $layout = 'layouts.public';
     public $showModal = false;
@@ -35,12 +37,13 @@ class Post extends Component
 
     // rules when creating
     protected $createRules = [
-        'attachment' => 'required|file|max:2048|mimes:pdf,doc,docx,jpg,jpeg,png',
+        'attachment' => 'required|file|max:6144|mimes:pdf,doc,docx,jpg,jpeg,png,mp4,avi,mov,wmv',
     ];
 
     // rules when updating
     protected $updateRules = [
-        'attachment' => 'nullable|file|max:2048|mimes:pdf,doc,docx,jpg,jpeg,png',
+        'attachment' => 'nullable|file|max:6144|mimes:pdf,doc,docx,jpg,jpeg,png,mp4,avi,mov,wmv',
+        'status' => 'required|in:1,0',
     ];
 
     protected $messages = [
@@ -182,7 +185,7 @@ class Post extends Component
             'title' => $this->title,
             'date' => $gregorianDate,
             'description' => $this->description,
-            'status' => $this->status,
+            'status' => $this->status==1 ? 'done' : 'undone',
         ];
 
         $path = null;
@@ -223,7 +226,7 @@ class Post extends Component
         $this->description = $post->description;
         $this->attachment = null;
         $this->postAttachement = $post->attachment; // user must upload new file
-        $this->status = $post->status->value;
+        $this->status = $post->status->value=='done' ? 1 : 0;
         $this->selectedUser = $post->user_id; // Default user, you can modify this based on your needs
         $this->showModal = true;
     }
