@@ -109,9 +109,17 @@
                 <!-- File Upload -->
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-3">فایل پیوست</label>
-                    <input type="file" wire:model="attachment"
-                        class="w-sm px-4 py-1 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
-                        accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                    <div class="relative">
+                        <label for="file-upload" class="cursor-pointer inline-flex items-center px-6 py-3 text-lg border-2 border-gray-300 rounded-xl hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all">
+                            <svg class="w-6 h-6 ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                            </svg>
+
+                            <span class="font-medium text-gray-700">فایل خود را اینجا آپلود کنید (ویدیو یا تصویر) </span>
+                        </label>
+                        <input id="file-upload" type="file" wire:model="attachment" class="hidden"
+                            accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                    </div>
                     @if ($attachment)
                         <p class="mt-2 text-sm text-gray-600">
                             فایل انتخاب شده: <span class="font-medium">{{ $attachment->getClientOriginalName() }}</span>
