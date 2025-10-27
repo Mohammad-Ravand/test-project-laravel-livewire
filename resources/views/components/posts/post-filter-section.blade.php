@@ -1,5 +1,6 @@
 @props([
     'users' => [],
+    'filterStatus'=>''
 ])
 <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6">
     <div class="flex  items-center">
@@ -34,10 +35,12 @@
                 <p>فیلتر براساس:‌</p>
             </div>
             <div class="flex gap-3">
-                <button class="text-gray-900 font-medium pb-2" wire:click="toggleFilterStatus('all')">همه</button>
-                <button class="text-gray-500 pb-2   hover:text-gray-700" wire:click="toggleFilterStatus('done')">انجام
+
+                <button class="pb-2 {{ $filterStatus == 'all' ? 'text-gray-900 font-medium' : 'text-gray-500 hover:text-gray-700' }}" wire:click="toggleFilterStatus('all')">همه</button>
+
+                <button class="pb-2 {{ $filterStatus == 'done' ? 'text-gray-900 font-medium' : 'text-gray-500 hover:text-gray-700' }}" wire:click="toggleFilterStatus('done')">انجام
                     شده</button>
-                <button class="text-gray-500 pb-2   hover:text-gray-700" wire:click="toggleFilterStatus('undone')">انجام
+                <button class="pb-2 {{ $filterStatus == 'undone' ? 'text-gray-900 font-medium' : 'text-gray-500 hover:text-gray-700' }}" wire:click="toggleFilterStatus('undone')">انجام
                     نشده</button>
             </div>
         </div>

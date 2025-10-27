@@ -3,7 +3,7 @@
     <x-posts.header :search="$search" />
 
     <!-- Filter Section -->
-    <x-posts.post-filter-section :users="$users" />
+    <x-posts.post-filter-section :users="$users" :filterStatus="$filterStatus" />
 
     <!-- Posts Grid -->
     <div class="max-w-7xl mx-auto px-6 lg:px-8 pb-8">
