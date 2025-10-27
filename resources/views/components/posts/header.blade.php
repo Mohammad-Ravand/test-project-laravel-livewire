@@ -7,7 +7,7 @@
             <h1 class="text-2xl font-bold text-gray-900">نوشته های من</h1>
             <div class="flex gap-3 items-center space-x-4 space-x-reverse">
                 <div class="relative">
-                    <input type="text" wire:model.live.debounce.300ms="search" placeholder="جستجو کنید..."
+                    <input type="search" wire:model.live.debounce.300ms="search" placeholder="جستجو کنید..."
                         class="w-80 px-4 py-2 pr-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
 
                     <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
